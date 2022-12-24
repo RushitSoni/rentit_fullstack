@@ -18,8 +18,12 @@ import BookingList from "./Components/Admin/BookingList/BookingList";
 import EditProfile from "./Components/MyProfile/EditProfile";
 import About from "./Components/AboutUs/About";
 
+import Bookings from "./Components/Bookings/Bookings";
+
+import New from "./Components/Admin/Car/New";
+
+
 function App() {
-  
   const dispatch = useDispatch();
   const {user} = useSelector(state=>state.user)
   const [container, setContainer] = useState("logined");
@@ -73,6 +77,11 @@ function App() {
           element={<UserList />}
         ></Route>
         <Route exact path='/admin/dashboard/cars' element={<CarList />}></Route>
+
+        <Route exact path='/mybookings' element={<Bookings/>}></Route>
+
+        <Route exact path='/admin/dashboard/car/new' element={<New />}></Route>
+
         <Route
           exact
           path='/admin/dashboard/bookings'

@@ -30,11 +30,15 @@
 .nav-links:hover{
     color: white;
     font-size: 1.15vmax;
-    transition: .5s all ease-in-out;
-    border-bottom: 1.5px solid #44b7ff;
+    transition: .6s all ease-in-out;
+    border-bottom: 1.7px solid #44b7ff;
 }
 .fa-cog {
     color: white
+  }
+  .fa-cog:hover{
+    color: #44b7ff;
+    transition: .5s all ease-in-out;
   }
 
   

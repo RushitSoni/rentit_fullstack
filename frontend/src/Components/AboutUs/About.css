@@ -1,10 +1,11 @@
 .aboutUs {
   height: 100%;
-  overflow: hidden;
-  background-color: #222831;
+  /* overflow: hidden;
+  background-color: #222831; */
 }
 .bg {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),url('./bg.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
+    url("./bg.webp");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 9999;
@@ -18,7 +19,7 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  font-family: 'Luna';
+  font-family: "Luna";
 }
 header {
   box-sizing: border-box;
@@ -34,13 +35,13 @@ header::before {
 }
 header::before {
   bottom: 0;
-  content: '';
+  content: "";
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
   display: block;
-  background-image: url('https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&w=600');
+  background-image: url("https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&w=600");
   background-size: cover;
   /* transform-origin: center center 0;
   transform: translateZ(-10px) scale(2); */
@@ -49,32 +50,39 @@ header::before {
 }
 
 .partition {
-  margin-top: 0;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* padding: 30px; */
+  margin-top: 25px;
 }
 .leftp {
-  display: flex;
   width: 30%;
   background-color: #3591ca;
+  height: 32vmax;
+  /* padding: 4vmax; */
 }
 .rightp {
   display: flex;
-  width: 60%;
-  background-color: rgb(98, 98, 105);
+  flex-direction: column;
+  row-gap: 1.2vmax;
+  width: 70%;
+  /* background-color: rgb(98, 98, 105); */
+  background-color: #222831;
   text-align: left;
-  padding-left: 7.5rem;
-  padding-top: 3rem;
-  font-size: 1.2rem;
-  line-height: 1.5rem;
+  padding: 4.5vmax;
+  /* font-size: 1.2rem;
+  line-height: 1.5rem; */
   color: white;
+  height: 32vmax;
 }
 .centerp {
-  display: flex;
+  /* display: flex;
   width: 10%;
-  background-color: rgb(98, 98, 105);
+  background-color: rgb(98, 98, 105); */
 }
 span {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
 }
 .head {
   font-size: 2.5rem;
@@ -89,12 +97,12 @@ span {
   font-size: 1.3rem;
 }
 .centerp img {
-  margin-top: 5rem;
-  margin-left: -15rem;
+  /* margin-top: 5rem;
+  margin-left: -15rem; */
   align-items: center;
   text-align: center;
-  height: 30rem;
-  width: 25rem;
+  /* height: 30rem;
+  width: 25rem; */
 }
 header .text {
   margin-top: -100px;

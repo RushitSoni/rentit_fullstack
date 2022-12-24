@@ -3,7 +3,7 @@ import "./UserList.css";
 
 import { DataGrid } from "@mui/x-data-grid";
 
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch, useNavigate } from "react-router-dom";
 
 import { MdDeleteOutline } from "react-icons/md";
 import Navbar from "../../Navbar/Navbar";
@@ -11,14 +11,16 @@ import SideBar from "../Sidebar/Sidebar";
 import "../Dashboard.css";
 import "../Sidebar/Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from "../../../Actions/adminActions";
+import { deleteUser, getAllUsers } from "../../../Actions/adminActions";
 export default function UserList() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { users } = useSelector((state) => state.admin);
   // console.log(users);
-  // const handleDelete = (id) => {
-  //   setData(data.filter((item) => item.id !== id));
-  // };
+  const handleDelete = (id) => {
+   dispatch(deleteUser(id));
+   navigate("/admin/dashboard");
+  };
 
   // const array = []
 
@@ -88,7 +90,7 @@ export default function UserList() {
             <MdDeleteOutline
               className="userListDelete"
               size="1.5rem"
-              // onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.id)}
             />
           </>
         );
@@ -127,7 +129,7 @@ export default function UserList() {
       </div> */}
           {/* console.log(Search(data)) */}
           <DataGrid
-            style={{ color: "#EEEEEE" }}
+            style={{ color: "#EEEEEE",fontSize:"0.85vmax" }}
             rows={rows}
             disableSelectionOnClick
             columns={columns}

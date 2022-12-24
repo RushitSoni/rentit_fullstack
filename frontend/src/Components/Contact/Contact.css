@@ -45,7 +45,7 @@ body {
   text-align: center;
   font-weight: 300;
   opacity: 0.9;
-  font-size: 15px;
+  font-size: 18px;
 }
 .contact-bg .text {
   margin: 1.6rem 0;
@@ -123,6 +123,7 @@ body {
 }
 
 .form-area {
+  padding: 0.35rem;
   width: 100%;
   border: 1.5px solid #c7c7c7;
   border-radius: 5px;

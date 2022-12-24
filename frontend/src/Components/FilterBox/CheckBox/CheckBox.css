@@ -23,3 +23,12 @@
     color: #b82121;
 } */
 
+
+
+@media(width<=450px){
+    
+    .css-dmmspl-MuiFormGroup-root{
+        
+        display: inline-block;
+    }
+}

@@ -1,8 +1,9 @@
 .main-content {
-
   margin-top: 80px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: space-around;
+  padding: 1.1rem;
   gap: 7.3rem;
 }
 .inner-content {
@@ -59,21 +60,26 @@
   color: white;
 }
 
+
+@media (max-width: 530px) {
+  .all-content {
+
+
 @media (max-width:530px){
 
   .all-content{
+
     height: 100%;
   }
-  .main-content{
+  .main-content {
     display: flex;
     flex-direction: column-reverse;
     text-align: center;
   }
-  .img-div{
+  .img-div {
     justify-content: center;
   }
-  img{
+  img {
     justify-content: center;
   }
-
 }

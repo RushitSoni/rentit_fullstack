@@ -14,10 +14,11 @@ import moment from "moment";
 import { DatePicker } from "antd";
 import { useState } from "react";
 import { newBooking } from "../../Actions/bookingActions";
+import StripeCheckout from "react-stripe-checkout";
 const { RangePicker } = DatePicker;
 const CarDetails = () => {
   const params = useParams();
-  console.log(params);
+  // console.log(params);
   const dispatch = useDispatch();
   const { car, loading } = useSelector((state) => state.cars);
   // const { error,loadingb } = useSelector((state) => state.booking);
@@ -66,11 +67,19 @@ const CarDetails = () => {
   //   }
   // };
   const handleBooking = () => {
-      dispatch(newBooking(params.id, bookedSlot, totalHours, totalHours * rent));
-      setfrom("");
-      setto("");
-      settotalHours("");
-      setavailibility(true);
+    dispatch(newBooking(params.id, bookedSlot, totalHours, totalHours * rent));
+    setfrom("");
+    setto("");
+    settotalHours("");
+    setavailibility(true);
+  };
+  const onToken = (token) => {
+    // console.log(token);
+    dispatch(newBooking(params.id, bookedSlot, totalHours, totalHours * rent,token));
+    setfrom("");
+    setto("");
+    settotalHours("");
+    setavailibility(true);
   };
   return (
     <>
@@ -149,7 +158,15 @@ const CarDetails = () => {
                   <>
                     <h4>Total Hours: {totalHours}</h4>
                     <h4>Total Amount: {totalHours * rent}</h4>
-                    <Link onClick={handleBooking}>Book Now</Link>
+
+                    <StripeCheckout
+                      token={onToken}
+                      currency="inr"
+                      amount={totalHours*rent*100}
+                      stripeKey="pk_test_51MD4fISAnNDrfpjkKm2ORcKYxxnwzKF0wW8rWukzWaGzLOAXGTlnF7ktZH8Cwz31X4el9BrYvmbZJAOWaSM1JJOP00wgOCnCqT"
+                    >
+                      <Link>Book Now</Link>
+                    </StripeCheckout>
                   </>
                 ) : (
                   <>

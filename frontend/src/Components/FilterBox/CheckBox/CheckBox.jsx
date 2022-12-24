@@ -46,6 +46,7 @@ const CheckBox = () => {
             <FormControlLabel
               label="Tata"
               value="Tata"
+              
               control={
                 <Checkbox
                   size="large"
@@ -58,6 +59,7 @@ const CheckBox = () => {
             <FormControlLabel
               label="Toyota"
               value="Toyota"
+              
               control={
                 <Checkbox
                   size="large"
@@ -71,6 +73,7 @@ const CheckBox = () => {
               className="form-label"
               label="Nexa"
               value="Nexa"
+              
               control={
                 <Checkbox
                   size="large"

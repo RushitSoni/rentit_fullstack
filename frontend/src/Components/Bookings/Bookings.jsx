@@ -1,46 +1,48 @@
 import React, { useState, useEffect } from "react";
-import "./BookingList.css";
+import "./Bookings.css";
 
 import { DataGrid } from "@mui/x-data-grid";
-import "../Dashboard.css";
-import "../Sidebar/Sidebar.css";
-import { BrowserRouter as Router, Link, Route, Switch, useNavigate } from "react-router-dom";
+
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch,
+  useNavigate,
+} from "react-router-dom";
 
 import { MdDeleteOutline } from "react-icons/md";
 import { calculateNewValue } from "@testing-library/user-event/dist/utils";
-import Navbar from "../../Navbar/Navbar";
-import SideBar from "../Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteBooking, getAllBookings } from "../../../Actions/adminActions";
+import Navbar from "../Navbar/Navbar";
+import { getParticularBooking } from "../../Actions/bookingActions";
 
-export default function BookingList() {
-const navigate = useNavigate();
-const dispatch = useDispatch();
-const {bookings} = useSelector(state=>state.admin);
+export default function Bookings() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { mybookings } = useSelector((state) => state.booking);
 
   useEffect(() => {
-  dispatch(getAllBookings());
+    dispatch(getParticularBooking());
   }, [dispatch]);
 
-const rows = [];
-bookings && bookings.forEach(booking => {
-  let amt = `₹${booking.totalAmount}`
-  rows.push({
-    id:booking._id,
-transactionid:booking.transactionId,
-amount:amt,
-from:booking.bookedSlot.from,
-to:booking.bookedSlot.to,
-hours:booking.totalHours
-  })
-});
-const handleDelete = (id) => {
-dispatch(deleteBooking(id));
-navigate("/admin/dashboard");
-}
+  const rows = [];
+  mybookings &&
+    mybookings.forEach((booking) => {
+      let amt = `₹${booking.totalAmount}`;
+      rows.push({
+        id: booking._id,
+        transactionid: booking.transactionId,
+        amount: amt,
+        from: booking.bookedSlot.from,
+        to: booking.bookedSlot.to,
+        hours: booking.totalHours,
+      });
+    });
+
   const columns = [
     { field: "id", headerName: "Booking ID", minWidth: 180, flex: 0.2 },
-    
+
     {
       field: "from",
       headerName: "Booked Slot: From",
@@ -76,33 +78,14 @@ navigate("/admin/dashboard");
       flex: 0.2,
       minWidth: 120,
     },
-    {
-      field: "action",
-      headerName: "Action",
-      minWidth: 150,
-      renderCell: (params) => {
-        return (
-          <>
-            <MdDeleteOutline
-              className="productListDelete"
-              size="1.5rem"
-              onClick={() => handleDelete(params.row.id)}
-            />
-          </>
-        );
-      },
-    },
   ];
   return (
     <div style={{ width: "100%", backgroundColor: "#222831", height: "100vh" }}>
       <Navbar />
       <div className="main-container2">
-        <div className="sidebar-container">
-          <SideBar />
-        </div>
         <div className="productList">
           <DataGrid
-            style={{ color: "#EEEEEE",fontSize:"0.85vmax" }}
+            style={{ color: "#EEEEEE", fontSize: "0.85vmax" }}
             rows={rows}
             disableSelectionOnClick
             columns={columns}

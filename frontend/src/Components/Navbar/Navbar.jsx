@@ -4,15 +4,18 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "./Navbar.css";
 import logo from "../../images/logo.png";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Actions/userActions";
 
 const Navbar = () => {
+  let navigate = useNavigate();
   const { isAuthenticated } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(logout());
+    navigate("/");
   };
   return (
     <>
@@ -56,7 +59,9 @@ const Navbar = () => {
               <NavLink to="/myprofile">
               <Dropdown.Item href="/myprofile"> My Profile </Dropdown.Item>
               </NavLink>
-              <Dropdown.Item href="#/action-2">My Bookings</Dropdown.Item>
+              <NavLink to="/mybookings">
+              <Dropdown.Item href="/mybookings">My Bookings</Dropdown.Item>
+              </NavLink>
               <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
               <NavLink to="/admin/dashboard">
               <Dropdown.Item href="/admin/dashboard">Dashboard</Dropdown.Item>

@@ -15,5 +15,18 @@
 .card-container{
   display: flex;
   flex-wrap: wrap;
-  width: 75%;
+  width: 75%;  
+}
+
+@media (width<=450px){
+
+  .car-container{
+    flex-direction: column;
+  }
+  .car-container>div{
+    width: 100%;
+  }
+  .card-container{
+    justify-content: center;
+  }
 }

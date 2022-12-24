@@ -4,6 +4,7 @@ import car1 from "../../../images/car1.png";
 import car2 from "../../../images/car2.png";
 import car3 from "../../../images/car3.png";
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom'
 import "./Slider.css";
 const Simpleslider = () => {
   return (
@@ -22,7 +23,11 @@ const Simpleslider = () => {
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
-            <button className="carousel-button">Book Now</button>
+            <div>
+              <Link to='/cars'>
+                  <button className="carousel-button">Book Now</button>
+              </Link>  
+            </div>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={500}>
@@ -35,7 +40,11 @@ const Simpleslider = () => {
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
-            <button className="carousel-button">Book Now</button>
+            <div>
+              <Link to='/cars'>
+                  <button className="carousel-button">Book Now</button>
+              </Link>  
+            </div>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -50,8 +59,11 @@ const Simpleslider = () => {
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
+           
             <div>
-              <button className="carousel-button">Book Now</button>
+              <Link to='/cars'>
+                  <button className="carousel-button">Book Now</button>
+              </Link>  
             </div>
           </Carousel.Caption>
         </Carousel.Item>

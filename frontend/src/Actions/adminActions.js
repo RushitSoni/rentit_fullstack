@@ -38,7 +38,30 @@ try {
   dispatch({type:"deleteCarRequest"});
   const {data} = await axios.delete(`/myapp/admin/car/${id}`);
   dispatch({type:"deleteCarSuccess",payload:data.message})
+  alert("Car Deleted Successfully")
 } catch (error) {
   dispatch({type:"deleteCarFailure",payload:error.response.data.message})
 }
+}
+
+export const deleteBooking = (id) => async (dispatch) => {
+  try {
+    dispatch({type:"deleteBookingRequest"});
+    const {data} = await axios.delete(`/myapp/admin/booking/${id}`);
+    dispatch({type:"deleteBookingSuccess",payload:data.message});
+    alert("Booking Deleted Successfully")
+  } catch (error) {
+    dispatch({type:"deleteBookingFailure",payload:error.response.data.message})
+  }
+}
+
+export const deleteUser = (id) => async (dispatch) => {
+  try {
+    dispatch({type:"deleteUserRequest"});
+    const {data} = await axios.delete(`/myapp/admin/user/${id}`);
+    dispatch({type:"deleteUserSuccess",payload:data.message});
+    alert("User Deleted Successfully")
+  } catch (error) {
+    dispatch({type:"deleteUserFailure",payload:error.response.data.message})
+  }
 }
