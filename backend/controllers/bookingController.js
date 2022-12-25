@@ -5,7 +5,10 @@ const ErrorHandler = require("../utils/errorHandler");
 const stripe = require('stripe')("sk_test_51MD4fISAnNDrfpjkwWC3y9OBlvRiAU5dTuxjD5zXxxQzvtWFBZicKXfNniiKJKqLTjE6X85yJYtqNrlTJBregocI009FqdBmnc")
 // Book Car
 exports.bookCar = catchAsyncErrors(async (req, res, next) => {
-
+if (req.body.totalHours === 0) {
+  return next(new ErrorHandler("Please select valid hours!",404));
+}
+else{
   const {token} = req.body;
   const customer = await stripe.customers.create({
     email:token.email,
@@ -63,6 +66,7 @@ exports.bookCar = catchAsyncErrors(async (req, res, next) => {
   else{
     return next(new ErrorHandler("Booking Failed", 500));
   }
+}
 });
 
 // Get All Bookings --Admin

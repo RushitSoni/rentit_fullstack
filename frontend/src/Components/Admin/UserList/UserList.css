@@ -27,8 +27,12 @@
     color: rgb(232, 70, 70);
     cursor: pointer;
   }
-    svg {
-     /* color: #EEEEEE;  */
+    /* svg {
+     color: white;
+  } */
+
+  .css-ptiqhd-MuiSvgIcon-root{
+    color: white;
   }
   .search {
     display: flex;
@@ -55,3 +59,10 @@
     right: 0;
   }
   
+  .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar{
+    color: white;
+  }
+
+ .MuiToolbar-root{
+  padding: 10px;
+ }

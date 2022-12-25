@@ -106,8 +106,12 @@ const Navbar = () => {
               id="dropdown-basic-button"
               title={`Welcome ${user.name}`}
             >
-              <Dropdown.Item href="/myprofile/editprofile">My Profile</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">My Bookings</Dropdown.Item>
+              <NavLink to="/myprofile">
+              <Dropdown.Item href="/myprofile"> My Profile </Dropdown.Item>
+              </NavLink>
+              <NavLink to="/mybookings">
+              <Dropdown.Item href="/mybookings">My Bookings</Dropdown.Item>
+              </NavLink>
               <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
             </DropdownButton>
           </li>

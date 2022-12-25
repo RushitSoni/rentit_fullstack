@@ -1,5 +1,6 @@
 .carList {
     width: 100%;
+    margin: 2.5vh;
   }
   
   .productListItem {
@@ -15,7 +16,11 @@
   }
   .productListEdit {
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
+    font-size: .8rem;
+    font-weight: 600;
+    height: fit-content;
+    width: fit-content;
     padding: 5px 10px;
     background-color: #00ADB5;
     color: #EEEEEE;
@@ -31,4 +36,36 @@
     margin-left: 90%;
     height: 5vh;
   }
-  
+  .MuiDataGrid-cell--textLeft{
+    font-size: .9rem;
+  }
+  .MuiDataGrid-columnHeaderTitleContainer{
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .MuiDataGrid-columnHeaderDraggableContainer{
+    width: fit-content;
+  }
+
+.productAddButton{
+  border-radius: 5px;
+  border-color: #0d6efd;
+  background-color:  #0d6efd;
+  color: white;
+  /* font-weight: 700; */
+  height: 4.7vh;
+  width: fit-content;
+  text-align: center;
+  padding: 5px;
+}
+
+.productAddButton:hover{
+  background-color: #3480f3;
+  transition: .5s all ease-in-out;
+}
+.css-h4y409-MuiList-root{
+
+ border-radius: 3px;
+ box-shadow: 1px 1px 1px 1px rgb(221, 223, 224);
+
+}

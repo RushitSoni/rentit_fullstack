@@ -62,11 +62,8 @@ const About = () => {
               animate="visible"
               className="text"
             >
-
-              <h1 style={{ color: "white" }}>RentIt</h1>
-              <h1 style={{ color: "white" }}>About Us</h1>
-              <h1 style={{ color: 'white',fontWeight:'bold',fontSize:'3.5vmax'}}>About Us</h1>
-
+              <h1 style={{ color: "white",fontSize:"2.7vmax" }}>RentIt</h1>
+              <h1 style={{ color: "white",fontSize:"2.7vmax" }}>About Us</h1>
             </motion.div>
           </header>
         </div>
@@ -114,7 +111,7 @@ const About = () => {
             {/* <motion.span className="head"> */}
             <div style={{ fontSize: "1.7vmax",marginLeft:"8vmax" }}> Welcome To RentIt</div>
             {/* </motion.span> */}
-            <div style={{ fontSize: "1vmax",marginLeft:"8vmax" }}>
+            <div style={{ fontSize: "0.9vmax",marginLeft:"8vmax" }}>
               A small river named Duden flows by their place and supplies it
               with the necessary regelialia. It is a paradisematic country, in
               which roasted parts of sentences fly into your mouth. On her way
@@ -123,27 +120,9 @@ const About = () => {
               everything that was left from its origin would be the word "and"
               and the Little Blind Text should turn around and return to its
               own, safe country. A small river named Duden flows by their place
-              and supplies it with the necessary regelialia. It is a
-
-            >
-              <motion.span><h3>About Us </h3></motion.span>
-              <br></br>
-              <br></br>
-              <motion.span className='head'>Welcome To RentIt</motion.span>
-              <br></br>
-              <br></br>A small river named Duden flows by their place and
-              supplies it with the necessary regelialia. It is a paradisematic
-              country, in which roasted parts of sentences fly into your mouth.
-              On her way she met a copy. The copy warned the Little Blind Text,
-              that where it came from it would have been rewritten a thousand
-              times and everything that was left from its origin would be the
-              word "and" and the Little Blind Text should turn around and return
-              to its own, safe country. A small river named Duden flows by their
-              place and supplies it with the necessary regelialia. It is a
-              paradisematic country, in which roasted parts of sentences fly
-              into your mouth.
+              and supplies it with the necessary regelialia. 
             </div>
-            <div style={{ marginTop: "16px",marginLeft:"8vmax" }}>
+            <div style={{ marginTop: "0.8vmax",marginLeft:"8vmax" }}>
               <Link to="/cars" className="carousel-button">
                 Book A Car
               </Link>

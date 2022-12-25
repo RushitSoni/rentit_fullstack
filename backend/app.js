@@ -8,7 +8,7 @@ const errorHandler = require("./middleware/error");
 const session = require("express-session");
 const passport = require("passport");
 const pass = require("./middleware/passportAuth");
-const cors = require("cors");``
+const cors = require("cors");
 
 const app = express();
 
