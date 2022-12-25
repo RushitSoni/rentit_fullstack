@@ -33,16 +33,16 @@ const carSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  image: {
-    public_id: {
-      type: String,
-      required: true,
-    },
-    url: {
-      type: String,
-      required: true,
-    },
-  },
+  // image: {
+  //   public_id: {
+  //     type: String,
+  //     required: true,
+  //   },
+  //   url: {
+  //     type: String,
+  //     required: true,
+  //   },
+  // },
   noPlate: {
     type: String,
     required: [true, "Number Plate cannot be empty!"],
@@ -74,10 +74,6 @@ const carSchema = new mongoose.Schema({
       type: String,
       required: [true, "Fuel type can't be empty!"],
       enum: ["Petrol", "Gas", "Diesel"],
-    },
-    airConditioner: {
-      type: String,
-      required: [true, "Air Conditioner field can't be empty!"],
     },
     gps: {
       type: String,

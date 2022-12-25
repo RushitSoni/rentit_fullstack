@@ -11,7 +11,7 @@ import { GoLocation } from "react-icons/go";
 import { AiFillUsb } from "react-icons/ai";
 import { MdSensors } from "react-icons/md";
 import moment from "moment";
-import { DatePicker } from "antd";
+import { DatePicker, ConfigProvider, Modal, Button } from "antd";
 import { useState } from "react";
 import { newBooking } from "../../Actions/bookingActions";
 import StripeCheckout from "react-stripe-checkout";
@@ -27,6 +27,25 @@ const CarDetails = () => {
   const [totalHours, settotalHours] = useState();
   const [availibility, setavailibility] = useState();
 
+  //
+  const [size, setSize] = useState("large");
+  const [load, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const showModal = () => {
+    setOpen(true);
+  };
+  const handleOk = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setOpen(false);
+    }, 3000);
+  };
+  const handleCancel = () => {
+    setOpen(false);
+  };
+
+  //
   useEffect(() => {
     dispatch(getparticularCar(params.id));
   }, [dispatch, params.id]);
@@ -66,16 +85,18 @@ const CarDetails = () => {
   //     alert("Available");
   //   }
   // };
-  const handleBooking = () => {
-    dispatch(newBooking(params.id, bookedSlot, totalHours, totalHours * rent));
-    setfrom("");
-    setto("");
-    settotalHours("");
-    setavailibility(true);
-  };
+  // const handleBooking = () => {
+  //   dispatch(newBooking(params.id, bookedSlot, totalHours, totalHours * rent));
+  //   setfrom("");
+  //   setto("");
+  //   settotalHours("");
+  //   setavailibility(true);
+  // };
   const onToken = (token) => {
     // console.log(token);
-    dispatch(newBooking(params.id, bookedSlot, totalHours, totalHours * rent,token));
+    dispatch(
+      newBooking(params.id, bookedSlot, totalHours, totalHours * rent, token)
+    );
     setfrom("");
     setto("");
     settotalHours("");
@@ -90,7 +111,10 @@ const CarDetails = () => {
           <div style={{ backgroundColor: "#222831" }}>
             <Navbar />
           </div>
-          <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <div
+            className="car-details"
+            style={{ display: "flex", justifyContent: "space-evenly" }}
+          >
             <div style={{ padding: "2vmax" }}>
               <img src={carimg} alt="" srcset="" className="car-img" />
             </div>
@@ -99,16 +123,21 @@ const CarDetails = () => {
                 padding: "2vmax",
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: "space-evenly",
               }}
             >
-              <h1 style={{ fontSize: "2.1vmax" }}>{car && car.title}</h1>
-              <h3 style={{ fontSize: "1.5vmax" }}>₹{rent}/hr</h3>
-              <p style={{ fontSize: "1.1vmax" }}>{car && car.description}</p>
+              <h1 className="car-title" style={{ fontSize: "2.1vmax" }}>
+                {car && car.title}
+              </h1>
+              <p className="car-dis" style={{ fontSize: "1.2vmax" }}>
+                {car && car.description}
+              </p>
               <div
+                className="car-icon"
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
-                  width: "35%",
+                  width: "90%",
                   gap: "1.1vmax",
                 }}
               >
@@ -129,25 +158,35 @@ const CarDetails = () => {
                   {car && car.features.usb}
                 </div>
                 <div style={{ fontSize: "1.2vmax" }}>
-                  <MdSensors color="#222831" size="1.3em" />
+                  <MdSensors color="#222831" size="1.5em" />
                   {car && car.features.parkingSensor}
                 </div>
               </div>
+              <h3 className="car-rent" style={{ fontSize: "1.5vmax" }}>
+                ₹{rent}/hr
+              </h3>
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
-            <RangePicker
-              showTime
-              format="DD/MM/YYYY HH:mm"
-              onChange={selectedtimeSlots}
-            />
+
+          <div className="car-date">
+            <div className="car-date-text">Select your journey</div>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#3591ca",
+                },
+              }}
+            >
+              <RangePicker
+                className="car-range-picker"
+                showTime
+                format="DD/MM/YYYY HH:mm"
+                onChange={selectedtimeSlots}
+              />
+            </ConfigProvider>
+            <button onClick={showModal} className="car-book-btn">
+              BOOK NOW
+            </button>
             <br />
             {from && to && (
               <>
@@ -155,19 +194,60 @@ const CarDetails = () => {
                   Check for Availibility
                 </button> */}
                 {availibility && availibility ? (
-                  <>
-                    <h4>Total Hours: {totalHours}</h4>
-                    <h4>Total Amount: {totalHours * rent}</h4>
+                  <Modal
+                    className="car-modal"
+                    style={{}}
+                    open={open}
+                    title="RentIt"
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                    width={400}
+                    bodyStyle={{
+                      padding: "20px",
+                      textAlign: "center",
+                      fontStyle: "oblique",
+                      fontFamily: "fantasy",
+                    }}
+                    centered
+                    maskStyle={{
+                      background: "rgba(0,0,0,0.56)",
+                      backdropFilter: " blur(8px)",
+                    }}
+                    footer={[
+                      <Button key="back" onClick={handleCancel} size={size}>
+                        Return
+                      </Button>,
+                      <Button size={size}>
+                        {/* <Link
+                            
+                            onClick={handleBooking}
+                          >
+                            DONE
+                          </Link> */}
 
-                    <StripeCheckout
-                      token={onToken}
-                      currency="inr"
-                      amount={totalHours*rent*100}
-                      stripeKey="pk_test_51MD4fISAnNDrfpjkKm2ORcKYxxnwzKF0wW8rWukzWaGzLOAXGTlnF7ktZH8Cwz31X4el9BrYvmbZJAOWaSM1JJOP00wgOCnCqT"
-                    >
-                      <Link>Book Now</Link>
-                    </StripeCheckout>
-                  </>
+                        <StripeCheckout
+                          token={onToken}
+                          currency="inr"
+                          amount={totalHours * rent * 100}
+                          stripeKey="pk_test_51MD4fISAnNDrfpjkKm2ORcKYxxnwzKF0wW8rWukzWaGzLOAXGTlnF7ktZH8Cwz31X4el9BrYvmbZJAOWaSM1JJOP00wgOCnCqT"
+                        >
+                          <Link>Book Now</Link>
+                        </StripeCheckout>
+                      </Button>,
+                    ]}
+                  >
+                    <div className="car-book-details">
+                      <h4 style={{ fontWeight: "600" }}>
+                        Total Hours: {totalHours}
+                      </h4>
+                      <h4 style={{ fontWeight: "600" }}>
+                        Total Amount: {totalHours * rent} Rs
+                      </h4>
+                      {/* <Link className="car-book-btn" onClick={handleBooking}>
+                        Book Now
+                      </Link> */}
+                    </div>
+                  </Modal>
                 ) : (
                   <>
                     <h4>Not Available</h4>

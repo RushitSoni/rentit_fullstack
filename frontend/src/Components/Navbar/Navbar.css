@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 .my-nav-style{
     display: flex;
     gap: 4.2vmax;
@@ -12,6 +13,10 @@
 .nav-links{
     text-decoration: none;
     font-size: 1vmax;
+    color: #d8dfe6;
+    position: relative;
+    font-size: 1rem;
+    padding: 5px;
     color: #a7a9ad;
     font-family: 'Poppins', sans-serif;
 }
@@ -20,29 +25,82 @@
     font-size: 1vmax;
     background: #03A8B0;
     padding: 0.7vmax 2vmax;
-    border-radius: 14px;
+    border-radius: 3px;
     color: white;
 }
 .logo-img{
     width: 9vmax;
     height: 7vmax;
 }
-.nav-links:hover{
-    color: white;
-    font-size: 1.15vmax;
-    transition: .6s all ease-in-out;
-    border-bottom: 1.7px solid #44b7ff;
-}
+
 .fa-cog {
     color: white
   }
   .fa-cog:hover{
-    color: #44b7ff;
-    transition: .5s all ease-in-out;
+    color: #89c8ef;
+    transition: .45s all ease-in-out;
+  }
+
+
+  .nav-links::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    position:absolute;
+    left: 15;
+    bottom: 10px;
+    border: 6px solid rgb(34, 0, 255);
+    border-width: 0 0 3px 3px;
+    transition: all 0.45s;
+    opacity: 0;
+  }
+
+  .nav-links::after{
+    content: "";
+    width: 15px;
+    height: 15px;
+    position:absolute;
+    top:8px;
+    right: 15px;
+    border: 6px solid rgb(34, 0, 255);
+    border-width: 3px 3px 0 0;
+    transition: all 0.43s;
+    opacity: 0;
+  }
+
+  .nav-links:hover:before{
+    left: -5px;
+    opacity: 1;
+    bottom: -5px;
   }
 
   
-  @media (max-width:760px){
+  .nav-links:hover::after{
+    top: -5px;
+    right:-5px;
+    opacity: 1 ;
+  }
+
+  .nav-links:hover{
+    background-color: #6cbced;
+    transition: .6s all ease-in-out;
+    /* font-size: 1.2rem; */
+    color: black;
+  }
+  
+  @media (max-width:980px){
+
+    .nav-links{
+      font-size: .8rem;
+    }
+
+  }
+
+  @media (max-width:785px){
+
+    .nav-links{
+      font-size: .7rem;
+    }
 
     ul{
         gap: 4vmax;
@@ -53,19 +111,50 @@
     }
   }
 
-    
-  @media (max-width:630px){
+  @media (max-width:710px){
+
+    ul{
+        gap: 2vmax;
+    }
     #dropdown-basic-button{
         font-size: .6rem;
         padding: 3px;
     }
   }
+
+  @media (max-width:680px){
+
+    ul{
+        gap: 1.2vmax;
+    }
+    #dropdown-basic-button{
+        font-size: .5rem;
+        padding: 2px;
+    }
+    .my-nav-style{
+      gap:2vmax;
+    }
+  }
+    
+  @media (max-width:660px){
+   
+    ul{
+      gap: 2px;
+  }
+  .my-nav-style{
+    gap:1.8vmax;
+  }
+  }
  
       
   @media (max-width:550px){
     #dropdown-basic-button{
-        font-size: .6rem;
-        padding: 2.5px;
+
+        font-size: .40rem;
+        padding: 2px;
+    }
+    .my-nav-style{
+      gap:2vmax;
     }
   }
 
@@ -79,7 +168,7 @@
     }
     .nav-links{
         /* text-decoration: none; */
-        font-size: 2.3vh;
+        /* font-size: 2.3vh;  */
         color: #a7a9ad;
     }
     .logo-img{
@@ -94,6 +183,6 @@
     }  
     
     .nav-links:hover{
-        font-size: 1.3rem;
+        /* font-size: 1.3rem; */
     }
   }

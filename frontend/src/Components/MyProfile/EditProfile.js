@@ -1,11 +1,12 @@
 
 import React from 'react'
 import { Link, NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import "./EditProfile.css"
 import uimg1 from "../../images/uimg1.png";
 import { motion } from "framer-motion";
+// import { BrowserRouter as useNavigate } from "react-router-dom";
 
 
 const opacityVariants={
@@ -69,10 +70,10 @@ const infoAnimation={
 const EditProfile = () => {
 
 
-  const { isAuthenticated } = useSelector((state) => state.user);
-  const { user } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-
+  // let navigate = useNavigate();
+  // const { user } = useSelector((state) => state.user);
+  // const dispatch = useDispatch();
+ 
 
   return (
 
@@ -118,12 +119,12 @@ const EditProfile = () => {
 
                     <div>
                       <div className='field-label'><span>User Name</span></div>
-                      <div className='field-value'><span> --- </span></div>
+                      <div className='field-value'><span>User Name</span></div>
                     </div>
 
                     <div>
                       <div className='field-label'><span>Email</span></div>
-                      <div className='field-value'><span> ----- </span></div>
+                      <div className='field-value'><span>User Mail</span></div>
                     </div>                   
                   
                   </div>
@@ -212,10 +213,9 @@ const EditProfile = () => {
             </form>
 
         </motion.div>
-      
+  
          </div>
          
-
       </div>
    
     );

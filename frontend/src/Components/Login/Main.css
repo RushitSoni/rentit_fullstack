@@ -147,7 +147,7 @@
 .main-box,
 .form-section .signin-icons .icon.facebook {
   color: #333;
-  border: 1px solid #333;
+  border: 2px solid #333;
 }
 .main-box,
 .form-section .signin-icons .icon.facebook:hover {
@@ -156,7 +156,7 @@
 .main-box,
 .form-section .signin-icons .icon.google {
   color: #333;
-  border: 1px solid #333;
+  border: 2px solid #333;
 }
 
 .main-box,
@@ -166,7 +166,7 @@
 .main-box,
 .form-section .signin-icons .icon.twitter {
   color: #333;
-  border: 1px solid #333;
+  border: 2px solid #333;
 }
 .main-box,
 .form-section .signin-icons .icon.twitter:hover {
@@ -240,7 +240,7 @@
   background-image: linear-gradient(to right, #1fa4f6, #5995fd);
   border: hidden;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 19px;
   letter-spacing: 00.09em;
 }
 
@@ -277,8 +277,8 @@
   background-color: transparent;
   margin-top: 15px;
   font-weight: 600;
-  font-size: 12px;
-  border: 1px solid #fff;
+  font-size: 15px;
+  border: 2px solid #fff;
   letter-spacing: 00.09em;
 }
 

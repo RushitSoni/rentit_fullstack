@@ -33,7 +33,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink className="nav-links" to="/about">
-              About Us
+              AboutUs
             </NavLink>
           </li>
           <li>

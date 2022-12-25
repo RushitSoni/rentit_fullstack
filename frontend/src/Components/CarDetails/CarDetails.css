@@ -1,4 +1,110 @@
-.car-img{
-    height: 29vmax;
-    width: 40vmax;
+.car-details {
+  background: #efeff3;
+  padding: 25px;
+}
+
+.car-img {
+  height: 29vmax;
+  width: 36vmax;
+}
+
+.car-details .car-title {
+  cursor: pointer;
+  color: #3591ca;
+  font-weight: 800;
+}
+
+.car-details .car-dis {
+  cursor: pointer;
+  width: 40vmax;
+  color: black;
+  font-weight: 600;
+}
+
+.car-details .car-rent {
+  background: #3591ca;
+  border: none;
+  border-radius: 7px;
+  text-align: center;
+  width: 27%;
+  padding: 10px;
+  color: #efeff3;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.car-details .car-icon {
+  color: black;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border-left: 3px solid #3591ca;
+}
+
+.car-date {
+  background: #3591ca;
+  width: 100%;
+
+  padding: 20px;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.car-date .car-date-text {
+  width: 33%;
+  color: #efeff3;
+  font-size: 1.8vmax;
+  font-weight: 700;
+}
+
+.car-date .car-range-picker {
+  width: 35vmax;
+  height: 3vmax;
+  background-color: #efeff3;
+  color: #efeff3;
+  font-size: 1.5vmax;
+  font-weight: 500;
+  border-radius: 7px;
+  padding: 1.1vmax;
+}
+
+.car-date .car-range-picker::target-text {
+  /* border: 7px solid #3591ca; */
+  color: red;
+
+}
+
+.car-date .car-book-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #efeff3;
+  font-size: 1.5vmax;
+  font-weight: 700;
+  width: 35%;
+  border-radius: 7px;
+  padding: 1.1vmax;
+  background-color: #3591ca;
+  margin: 10px;
+}
+
+.car-date .car-book-details h4 {
+    font-weight: 700;
+    font-style: italic;
+    color: #3591ca;
+}
+
+.car-date .car-book-btn {
+  text-decoration: none;
+  width: 12%;
+  background: #3591ca;
+  color: #efeff3;
+  border-radius: 7px;
+  padding: 7px;
+  border: 3px solid #efeff3;
 }

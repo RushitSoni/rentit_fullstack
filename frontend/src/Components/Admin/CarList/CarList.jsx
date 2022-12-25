@@ -4,17 +4,13 @@ import "./CarList.css";
 import "../Dashboard.css";
 import "../Sidebar/Sidebar.css";
 import { DataGrid } from "@mui/x-data-grid";
-
-
-import { BrowserRouter as Router, Link, Route, Switch, useNavigate } from "react-router-dom";
-
+import { BrowserRouter as Router, Link, Route, Switch, useNavigate } from "react-router-dom"
 import { MdDeleteOutline } from "react-icons/md";
 import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 import Navbar from "../../Navbar/Navbar";
 import SideBar from "../Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCar, getAllCarsAdmin } from "../../../Actions/adminActions";
-
 import New from "../Car/New";
 
 export default function CarList() {

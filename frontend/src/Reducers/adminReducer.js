@@ -71,5 +71,16 @@ export const adminReducer = createReducer(initialState, {
   deleteUserFailure:(state,action)=>{
     state.loading = false;
     state.error = action.payload;
+  },
+  createCarRequest:(state)=>{
+    state.loading = true;
+  },
+  createCarSuccess:(state,action)=>{
+    state.loading = false;
+    state.newcar = action.payload;
+  },
+  createCarFailure:(state,action)=>{
+    state.loading = false;
+    state.error = action.payload;
   }
 });
