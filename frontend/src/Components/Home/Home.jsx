@@ -47,14 +47,12 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       setloading(false);
-    }, 4000);
+    }, 3000);
   }, []);
 
   return (
     <>
-      <div style={{ backgroundColor: "black" }}>
-        <Navbar />
-      </div>
+      
       {loading ? (
         <div style={{ height: "100vh", backgroundColor: "black" }}>
           {" "}
@@ -69,6 +67,9 @@ const Home = () => {
         </div>
       ) : (
         <div>
+          <div style={{ backgroundColor: "black" }}>
+        <Navbar />
+      </div>
           <motion.div
             variants={pagesAnimationLeft}
             initial="hidden"

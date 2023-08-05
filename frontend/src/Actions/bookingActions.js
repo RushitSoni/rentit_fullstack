@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { Button, message, Space } from 'antd';
 export const newBooking =
   (carBooked, bookedSlot, totalHours, totalAmount, token) =>
   async (dispatch) => {
@@ -19,13 +19,13 @@ export const newBooking =
         config
       );
       dispatch({ type: "newbookingSuccess", payload: data.bookingDetails });
-      alert("Booking success");
+      message.success("Booking success");
     } catch (error) {
       dispatch({
         type: "newbookingFailure",
         payload: error.response.data.message,
       });
-      alert(error.response.data.message);
+      message.error(error.response.data.message);
     }
   };
 export const getParticularBooking = () => async(dispatch) => {

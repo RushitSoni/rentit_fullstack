@@ -1,6 +1,7 @@
 .car-details {
   background: #efeff3;
   padding: 25px;
+  width: 100%;
 }
 
 .car-img {
@@ -42,7 +43,7 @@
 }
 
 .car-date {
-  background: #3591ca;
+  background: #222831;
   width: 100%;
 
   padding: 20px;
@@ -101,10 +102,67 @@
 
 .car-date .car-book-btn {
   text-decoration: none;
-  width: 12%;
+  /* width: 12%; */
   background: #3591ca;
   color: #efeff3;
   border-radius: 7px;
-  padding: 7px;
-  border: 3px solid #efeff3;
+  padding: 1vmax;
+  border: none;
+  /* border: 3px solid #efeff3; */
+}
+
+/* .book-now-car{
+  font-weight: 600;
+}
+.book-now-car:hover{
+  opacity: .8;
+  background-color: #3591ca;
+  color: #222831;
+  transition: .6s all ease-in-out;
+} */
+
+@media (max-width:530px) {
+
+  .car-details{
+    display: flex;
+    flex-direction: column;
+  }
+  .car-rent{
+    margin-top: 2vh;
+  }
+  .car-date,.car-book-btn{
+    display: block;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .car-date .car-date-text {
+    width: 100%;
+    color: #efeff3;
+    margin-bottom: 2vh;
+    font-size: 2vmax;
+    margin-top: 2vh;
+    font-weight: 700;
+  }
+  
+.car-date .car-book-btn {
+  text-decoration: none;
+  margin: 2vh 10% 10% 10%;
+  width: 80%;
+  background: #3591ca;
+  color: #efeff3;
+  border-radius: 7px;
+  padding: 1vmax;
+  border: none;
+  /* border: 3px solid #efeff3; */
+}
+.car-date .car-range-picker{
+
+  height: 4vh;
+  width: 80%;
+}
+}
+
+.book-now-car a{
+  text-decoration: none;
 }

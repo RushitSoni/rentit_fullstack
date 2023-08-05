@@ -18,6 +18,7 @@ const New = () => {
     title: "",
     description: "",
     rent: "",
+    url:"",
     noPlate: "",
     company: "",
     model: "",
@@ -43,7 +44,8 @@ const New = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
- dispatch(createCar(carDetails.title,carDetails.description,carDetails.rent,carDetails.noPlate,carDetails.company,carDetails.model,carDetails.colour,carDetails.seats,carDetails.gear,carDetails.fuelType,carDetails.gps,carDetails.usb,carDetails.radio,carDetails.parkingSensor))
+ dispatch(createCar(carDetails.title,carDetails.description,carDetails.rent,carDetails.url,carDetails.noPlate,carDetails.company,carDetails.model,carDetails.colour,carDetails.seats,carDetails.gear,carDetails.fuelType,carDetails.gps,carDetails.usb,carDetails.radio,carDetails.parkingSensor))
+console.log(carDetails.url);
   };
   return (
     <div>
@@ -56,6 +58,7 @@ const New = () => {
           <SideBar />
         </div>
 
+      
         <div className="img-container">
           <div className="heading">
             <h2>Create A New Car</h2>
@@ -94,7 +97,18 @@ const New = () => {
                 required
               />
             </div>
-
+            <div className="new-car-data">
+              <input
+                type="text"
+                name="url"
+                // value={"rent"}
+                value={carDetails.url}
+                onChange={changeHandler}
+                className="car-input"
+                placeholder="Image URL"
+                required
+              />
+            </div>
             {/* <div className="new-car-data">
               Featured:
              True <input

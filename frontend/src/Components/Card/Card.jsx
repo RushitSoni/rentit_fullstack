@@ -15,8 +15,12 @@ const Card = ({cars,isFeatured}) => {
           </div>
         </div>
         <div className="main-content">
-          <img
+          {/* <img
             src="https://cdn.vox-cdn.com/thumbor/HiwWwuQ_03ZW3m2BIcb1NtYPlcw=/0x0:2870x2116/1200x800/filters:focal(1203x969:1661x1427)/cdn.vox-cdn.com/uploads/chorus_image/image/50272225/150028_car.0.jpg"
+            alt=""
+          /> */}
+          <img
+            src={cars.url}
             alt=""
           />
         </div>

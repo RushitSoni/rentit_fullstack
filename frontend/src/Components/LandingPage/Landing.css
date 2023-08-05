@@ -6,6 +6,7 @@
   justify-content: space-evenly;
   padding: 1.1rem;
   /* gap: 7.3rem; */
+  overflow-x: hidden;
 }
 .inner-content {
   margin-left: -20px;
@@ -42,7 +43,7 @@
 .side-img {
   width: 31vmax;
   height: 31vmax;
-  border-radius: 50%;
+  /* border-radius: 10px; */
 }
 .all-content {
   /* background-color: #222831; */
@@ -64,6 +65,7 @@
   background: linear-gradient(110deg, #3591ca 60%, #ffffff 60%);
   color: white;
   height: 100vh;
+  width: 100%;
 }
 .mylink1:hover {
   color: white;

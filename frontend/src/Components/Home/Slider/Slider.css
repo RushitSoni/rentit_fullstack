@@ -13,13 +13,18 @@
   color: #eeeeee;
   font-size: 1.2vmax;
   padding: 1vmax 2vmax;
-  background-color: #3591ca;
+  background-color: #0d6efd;
   text-decoration: none;
 }
 .carousel-para{
   font-size: 1rem;
 }
-
+.carousel-button:hover{
+  transition: .5s all ease-in-out;
+  background-color: #74b8e3;
+  color: black;
+  font-weight: 650;
+}
 
 .main-div{
   height: 100%;

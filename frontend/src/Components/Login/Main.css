@@ -135,13 +135,15 @@
 .main-box .form-section .signin-icons .icon {
   width: 48px;
   height: 48px;
+  border: 1px solid;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0px 10px;
+  text-decoration: none;
   color: #fff;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .main-box,
@@ -278,7 +280,7 @@
   margin-top: 15px;
   font-weight: 600;
   font-size: 15px;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   letter-spacing: 00.09em;
 }
 
@@ -287,6 +289,10 @@
   color: #04befe;
   transition: all ease 0.8s;
   border: 1px solid rgb(143, 141, 141);
+}
+
+.active{
+  text-decoration: none;
 }
 
 @media (max-width: 1080px) {

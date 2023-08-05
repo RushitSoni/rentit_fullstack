@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getparticularCar } from "../../Actions/carActions";
+import { ClimbingBoxLoader } from "react-spinners";
 import Navbar from "../Navbar/Navbar";
 import "./CarDetails.css";
 import carimg from "../../images/car-img.png";
@@ -15,6 +16,8 @@ import { DatePicker, ConfigProvider, Modal, Button } from "antd";
 import { useState } from "react";
 import { newBooking } from "../../Actions/bookingActions";
 import StripeCheckout from "react-stripe-checkout";
+import Footer from "../Footer/Footer";
+import { Margin } from "@mui/icons-material";
 const { RangePicker } = DatePicker;
 const CarDetails = () => {
   const params = useParams();
@@ -51,13 +54,15 @@ const CarDetails = () => {
   }, [dispatch, params.id]);
 
   const selectedtimeSlots = (values) => {
-    setfrom(moment(values[0]).format("MMM DD YYYY HH:mm"));
-    setto(moment(values[1]).format("MMM DD YYYY HH:mm"));
+    // console.log(moment(values[0].$d).format("MMM DD YYYY HH:mm"));
+    // console.log(moment(values[0]).format("MMM DD YYYY HH:mm"));
+    setfrom(moment(values[0].$d).format("MMM DD YYYY HH:mm"));
+    setto(moment(values[1].$d).format("MMM DD YYYY HH:mm"));
     settotalHours(values[1].diff(values[0], "hours"));
     setavailibility(true);
 
-    const sFrom = moment(values[0]);
-    const sTo = moment(values[1]);
+    const sFrom = moment(values[0].$d);
+    const sTo = moment(values[1].$d);
     if (car.bookedSlot.length === 0) {
       setavailibility(true);
     } else {
@@ -105,9 +110,19 @@ const CarDetails = () => {
   return (
     <>
       {loading ? (
-        <h1>Loading...</h1>
+        <div style={{ height: "100vh", backgroundColor: "black" }}>
+        {" "}
+        <ClimbingBoxLoader
+          color="#36d7b7"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        />
+      </div>
       ) : (
-        <>
+        <div>
           <div style={{ backgroundColor: "#222831" }}>
             <Navbar />
           </div>
@@ -116,7 +131,7 @@ const CarDetails = () => {
             style={{ display: "flex", justifyContent: "space-evenly" }}
           >
             <div style={{ padding: "2vmax" }}>
-              <img src={carimg} alt="" srcset="" className="car-img" />
+              <img src={car && car.url} alt="" srcset="" className="car-img" />
             </div>
             <div
               style={{
@@ -162,7 +177,7 @@ const CarDetails = () => {
                   {car && car.features.parkingSensor}
                 </div>
               </div>
-              <h3 className="car-rent" style={{ fontSize: "1.5vmax" }}>
+              <h3 className="car-rent" style={{ fontSize: "1.5vmax"}}>
                 ₹{rent}/hr
               </h3>
             </div>
@@ -173,7 +188,7 @@ const CarDetails = () => {
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: "#3591ca",
+                  colorPrimary: "#222831",
                 },
               }}
             >
@@ -184,6 +199,7 @@ const CarDetails = () => {
                 onChange={selectedtimeSlots}
               />
             </ConfigProvider>
+            
             <button onClick={showModal} className="car-book-btn">
               BOOK NOW
             </button>
@@ -217,7 +233,7 @@ const CarDetails = () => {
                       <Button key="back" onClick={handleCancel} size={size}>
                         Return
                       </Button>,
-                      <Button size={size}>
+                      <Button size={size} className="book-now-car">
                         {/* <Link
                             
                             onClick={handleBooking}
@@ -231,7 +247,7 @@ const CarDetails = () => {
                           amount={totalHours * rent * 100}
                           stripeKey="pk_test_51MD4fISAnNDrfpjkKm2ORcKYxxnwzKF0wW8rWukzWaGzLOAXGTlnF7ktZH8Cwz31X4el9BrYvmbZJAOWaSM1JJOP00wgOCnCqT"
                         >
-                          <Link>Book Now</Link>
+                          <Link>CONFIRM</Link>
                         </StripeCheckout>
                       </Button>,
                     ]}
@@ -250,13 +266,41 @@ const CarDetails = () => {
                   </Modal>
                 ) : (
                   <>
-                    <h4>Not Available</h4>
+                    {/* <h4>Not Available</h4> */}
+                    <Modal
+                    className="car-modal"
+                    style={{}}
+                    open={open}
+                    title="RentIt"
+                    onCancel={handleCancel}
+                    width={400}
+                    bodyStyle={{
+                      padding: "20px",
+                      textAlign: "center",
+                      fontStyle: "oblique",
+                      fontFamily: "fantasy",
+                    }}
+                    centered
+                    maskStyle={{
+                      background: "rgba(0,0,0,0.56)",
+                      backdropFilter: " blur(8px)",
+                    }}
+                    footer={[
+                      <Button key="back" onClick={handleCancel} size={size}>
+                        Return
+                      </Button>
+                    ]}
+                  >
+                    <div className="car-book-details">
+                      <h4>Not available</h4>
+                    </div>
+                  </Modal>
                   </>
                 )}
               </>
             )}
           </div>
-        </>
+        </div>
       )}
     </>
   );

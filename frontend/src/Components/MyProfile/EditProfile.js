@@ -1,11 +1,12 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import "./EditProfile.css"
 import uimg1 from "../../images/uimg1.png";
 import { motion } from "framer-motion";
+import { updateProfile } from '../../Actions/userActions';
 // import { BrowserRouter as useNavigate } from "react-router-dom";
 
 
@@ -69,12 +70,17 @@ const infoAnimation={
 
 const EditProfile = () => {
 
-
   // let navigate = useNavigate();
-  // const { user } = useSelector((state) => state.user);
-  // const dispatch = useDispatch();
- 
-
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const [newuserdetails,setnewUserDetails] = useState({
+    newname:"",
+    newemail:""
+  });
+const submitHandler = (e) => {
+e.preventDefault();
+dispatch(updateProfile(newuserdetails.newname,newuserdetails.newemail));
+}
   return (
 
       <div className='main-body'>
@@ -85,6 +91,7 @@ const EditProfile = () => {
             variants={opacityVariants}
             initial="hidden"
             whileInView={"visible"}
+            style={{fontFamily:"cursive"}}
             >My Profile</h1>
         </div>
 
@@ -119,12 +126,12 @@ const EditProfile = () => {
 
                     <div>
                       <div className='field-label'><span>User Name</span></div>
-                      <div className='field-value'><span>User Name</span></div>
+                      <div className='field-value'><span>{user.name}</span></div>
                     </div>
 
                     <div>
                       <div className='field-label'><span>Email</span></div>
-                      <div className='field-value'><span>User Mail</span></div>
+                      <div className='field-value'><span>{user.username}</span></div>
                     </div>                   
                   
                   </div>
@@ -142,14 +149,17 @@ const EditProfile = () => {
             viewport={{once:false,amount:0.3}}
             className="right-container">
 
-            <form autoComplete="on" className='change-details'>
+            <form autoComplete="on" className='change-details' onSubmit={submitHandler}>
               <div className="custom-input">
                 <div className="icon">
                   <i class="fas fa-user"></i>
                 </div>
                 <input
-                  type={"name"}
+                  name={"name"}
+                  type="text"
                   placeholder="Change Name" 
+                  value={newuserdetails.newname}
+                  onChange={(e)=>{setnewUserDetails({...newuserdetails,newname:e.target.value})}}
                   required
                 />
               </div>
@@ -160,13 +170,15 @@ const EditProfile = () => {
                 </div>
                 <input
                   type={"email"}
+                  name="username"
                   placeholder="Change Email"
-                  
+                  value={newuserdetails.newemail}
+                  onChange={(e)=>{setnewUserDetails({...newuserdetails,newemail:e.target.value})}}
                   required
                 />
               </div>
 
-              <div className="custom-input">
+              {/* <div className="custom-input">
                 <div className="icon">
                   <i class="fas fa-lock"></i>
                 </div>
@@ -175,9 +187,9 @@ const EditProfile = () => {
                   placeholder="Change Password"
                   minLength="8"
                 />
-              </div>
+              </div> */}
 
-              <div className="custom-input">
+              {/* <div className="custom-input">
                 <div className="icon">
                   <i class="fas fa-lock"></i>
                 </div>
@@ -186,7 +198,7 @@ const EditProfile = () => {
                   placeholder="Confirm Password"
                   required
                 />
-              </div>
+              </div> */}
               <br></br>
 
               <div className='btn-div'>
@@ -200,7 +212,7 @@ const EditProfile = () => {
                 Save Change
               </motion.button>
 
-              <NavLink  to="/home">
+              <NavLink  className={"back-home"} to="/home">
                   <div className='back-to-home'  
                   >
                       <h4  

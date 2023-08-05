@@ -292,7 +292,7 @@ export const MainContainer = ({
                 whileTap={"pressed"}
                 >
                 <Link to="" className="icon facebook">
-                  <i className="fab fa-facebook-f"></i>
+                  <i className="fab fa-facebook-f icon-dec"></i>
                 </Link>
 
               </motion.div>
@@ -304,7 +304,7 @@ export const MainContainer = ({
                 whileTap={"pressed"}
                 >      
                   <Link href="#" className="icon google">
-                    <i className="fab fa-google"></i>
+                    <i className="fab fa-google icon-dec"></i>
                   </Link>
 
               </motion.div>
@@ -316,7 +316,7 @@ export const MainContainer = ({
                 >
 
                   <Link href="#" className="icon twitter">
-                    <i className="fab fa-twitter"></i>
+                    <i className="fab fa-twitter icon-dec"></i>
                   </Link>
 
               </motion.div>

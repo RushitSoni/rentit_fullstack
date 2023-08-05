@@ -1,3 +1,4 @@
+import { message } from "antd";
 import axios from "axios";
 
 export const getAllUsers = () => async (dispatch) => {
@@ -44,7 +45,7 @@ export const deleteCar = (id) => async (dispatch) => {
     dispatch({ type: "deleteCarRequest" });
     const { data } = await axios.delete(`/myapp/admin/car/${id}`);
     dispatch({ type: "deleteCarSuccess", payload: data.message });
-    alert("Car Deleted Successfully");
+    message.success("Car Deleted Successfully");
   } catch (error) {
     dispatch({
       type: "deleteCarFailure",
@@ -58,7 +59,7 @@ export const deleteBooking = (id) => async (dispatch) => {
     dispatch({ type: "deleteBookingRequest" });
     const { data } = await axios.delete(`/myapp/admin/booking/${id}`);
     dispatch({ type: "deleteBookingSuccess", payload: data.message });
-    alert("Booking Deleted Successfully");
+    message.success("Booking Deleted Successfully");
   } catch (error) {
     dispatch({
       type: "deleteBookingFailure",
@@ -72,7 +73,7 @@ export const deleteUser = (id) => async (dispatch) => {
     dispatch({ type: "deleteUserRequest" });
     const { data } = await axios.delete(`/myapp/admin/user/${id}`);
     dispatch({ type: "deleteUserSuccess", payload: data.message });
-    alert("User Deleted Successfully");
+    message.success("User Deleted Successfully");
   } catch (error) {
     dispatch({
       type: "deleteUserFailure",
@@ -86,6 +87,7 @@ export const createCar =
     title,
     description,
     rent,
+    url,
     noPlate,
     company,
     model,
@@ -108,6 +110,7 @@ export const createCar =
           title,
           description,
           rent,
+          url,
           noPlate,
           company,
           model,
@@ -125,10 +128,12 @@ export const createCar =
         config
       );
       dispatch({ type: "createCarSuccess", payload: data.car });
+      message.success("Car Created Successfully");
     } catch (error) {
       dispatch({
         type: "createCarFailure",
         payload: error.response.data.message,
       });
+      message.error(error.response.data.message);
     }
   };

@@ -33,16 +33,10 @@ const carSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  // image: {
-  //   public_id: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   url: {
-  //     type: String,
-  //     required: true,
-  //   },
-  // },
+  url: {
+      type: String,
+      required: true,
+  },
   noPlate: {
     type: String,
     required: [true, "Number Plate cannot be empty!"],

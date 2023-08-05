@@ -39,7 +39,7 @@ export default function SideBar() {
 
         <Link to="/admin/dashboard/bookings" className="link">
           <span className={"sidebarListItem"}>
-            <MdOutlineAttachMoney className="sidebarIcon" /> 
+            <MdOutlineAttachMoney className="sidebarIcon" />
             Bookings
           </span>
         </Link>

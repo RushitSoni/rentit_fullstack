@@ -37,3 +37,6 @@
   .card-div {
     overflow: hidden;
   }
+  .slick-slide a{
+    text-decoration: none;
+  }

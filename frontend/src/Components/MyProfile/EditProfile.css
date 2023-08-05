@@ -9,7 +9,7 @@
 
     width: inherit;
     margin-top: 50px;
-    font-family: "Open Sans", sans-serif;
+    font-family: "cursive";
     line-height: 1.5;
     font-weight: bolder;
     text-align: center;
@@ -204,6 +204,9 @@
     height: 45px;
     text-align: center;
     padding: 3px
+  }
+  .back-home{
+    text-decoration: none;
   }
   .back-to-home h4{
     font-size: 21px;

@@ -11,11 +11,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid white;
 }
 .card-container{
   display: flex;
   flex-wrap: wrap;
   width: 75%;  
+}
+.card-container>a{
+  text-decoration: none;
 }
 
 @media (width<=450px){

@@ -18,13 +18,13 @@ export default function Chart({ title, data, dataKey, grid }) {
       <h3 className='chartTitle'>{title}</h3>
       <ResponsiveContainer width='100%' aspect={4 / 1}>
         <AreaChart data={data}>
-          <XAxis dataKey='Month' stroke='#5550bd' />
+          <XAxis dataKey='Month' stroke='white' />
           <YAxis />
           <Area
             type='monotone'
             dataKey={dataKey}
-            stroke='#00ADB5'
-            fill='#00ADB5'
+            stroke='#3591ca'
+            fill='#3591ca'
           />
           <Tooltip />
           {grid && <CartesianGrid strokeDasharray='5 5' />}

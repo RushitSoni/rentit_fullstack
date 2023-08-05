@@ -1,3 +1,4 @@
+import { message } from "antd";
 import axios from "axios";
 export const login = (username, password) => async (dispatch) => {
   try {
@@ -14,7 +15,7 @@ export const login = (username, password) => async (dispatch) => {
     dispatch({ type: "loginSuccess", payload: data.user });
   } catch (error) {
     dispatch({ type: "loginFailure", payload: error.response.data });
-    alert("Invalid Email or Password");
+    message.error("Invalid Email or Password");
   }
 };
 
@@ -39,6 +40,7 @@ export const register =
         type: "registerFailure",
         payload: error.response.data.message,
       });
+      message.error(error.response.data.message);
     }
   };
 
@@ -57,10 +59,32 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: "logoutRequest" });
     await axios.get("/myapp/logout");
     dispatch({ type: "logoutSuccess" });
+    message.success("Logout Success!")
   } catch (error) {
     dispatch({ type: "logoutFailure", payload: error.message });
   }
 };
+
+export const updateProfile = (name,username) => async (dispatch) => {
+
+  try {
+    dispatch({ type: "updateRequest"});
+    const config = { headers: { "Content-Type": "application/json" } };
+    const {data} = await axios.put("/myapp/me/update",
+    {
+    name,
+    username,
+    },
+  config
+    );
+    dispatch({type:"updateSuccess",payload:data.user});
+    message.success("Updated Successfully");
+  } catch (error) {
+    dispatch({ type: "updateFailure", payload: error.message });
+    message.error(error.message);
+  }
+}
+
 
 export const clearError = () => (dispatch) =>{
   dispatch({type:"clearError"});

@@ -22,10 +22,9 @@ import Bookings from "./Components/Bookings/Bookings";
 
 import New from "./Components/Admin/Car/New";
 
-
 function App() {
   const dispatch = useDispatch();
-  const {user} = useSelector(state=>state.user)
+  const { user, isAuthenticated } = useSelector((state) => state.user);
   const [container, setContainer] = useState("logined");
   const [logoClass, setLogoClass] = useState("logo blue");
 
@@ -38,7 +37,7 @@ function App() {
       setLogoClass("logo blue");
     }
 
-    if(container==="myprofile"){
+    if (container === "myprofile") {
       setContainer("editprofile");
     }
   };
@@ -50,12 +49,12 @@ function App() {
     <>
       {/* <Navbar/> */}
       <Routes>
-        <Route exact path='/' element={<Landing />}></Route>
-        <Route exact path='/home' element={<Home />}></Route>
-        <Route exact path='/cars' element={<Cars />}></Route>
+        <Route exact path="/" element={<Landing />}></Route>
+        <Route exact path="/home" element={<Home />}></Route>
+        <Route exact path="/cars" element={<Cars />}></Route>
         <Route
           exact
-          path='/login'
+          path="/login"
           element={
             <MainContainer
               container={container}
@@ -65,31 +64,100 @@ function App() {
           }
         ></Route>
 
-        <Route exact path='/contact' element={<Contact />}></Route>
-        <Route exact path='/about' element={<About/>}></Route>
-        <Route exact path='/services' element={<Service />}></Route>
-        <Route exact path='/car/:id' element={<CarDetails />}></Route>
-        <Route exact path='/myprofile' element={<EditProfile />}></Route>
-        <Route exact path='/admin/dashboard' element={<Dashboard />}></Route>
+        <Route exact path="/contact" element={<Contact />}></Route>
+        <Route exact path="/about" element={<About />}></Route>
+        <Route exact path="/services" element={<Service />}></Route>
+        <Route exact path="/car/:id" element={<CarDetails />}></Route>
         <Route
           exact
-          path='/admin/dashboard/users'
-          element={<UserList />}
+          path="/myprofile"
+          element={
+            isAuthenticated ? (
+              <EditProfile />
+            ) : (
+              <MainContainer
+                container={container}
+                changeContainerState={changeContainerState}
+                logoClass={logoClass}
+              />
+            )
+          }
         ></Route>
-        <Route exact path='/admin/dashboard/cars' element={<CarList />}></Route>
-
-        <Route exact path='/mybookings' element={<Bookings/>}></Route>
-
-        <Route exact path='/admin/dashboard/car/new' element={<New />}></Route>
+        <Route
+          exact
+          path="/mybookings"
+          element={
+            isAuthenticated ? (
+              <Bookings />
+            ) : (
+              <MainContainer
+                container={container}
+                changeContainerState={changeContainerState}
+                logoClass={logoClass}
+              />
+            )
+          }
+        ></Route>
+        <Route
+          exact
+          path="/admin/dashboard"
+          element={
+            isAuthenticated && user && user.role === "admin" ? (
+              <Dashboard />
+            ) : (
+              <Landing />
+            )
+          }
+        ></Route>
+        <Route
+          exact
+          path="/admin/dashboard/users"
+          element={
+            isAuthenticated && user && user.role === "admin" ? (
+              <UserList />
+            ) : (
+              <Landing />
+            )
+          }
+        ></Route>
+        <Route
+          exact
+          path="/admin/dashboard/cars"
+          element={
+            isAuthenticated && user && user.role === "admin" ? (
+              <CarList />
+            ) : (
+              <Landing />
+            )
+          }
+        ></Route>
 
         <Route
           exact
-          path='/admin/dashboard/bookings'
-          element={<BookingList />}
+          path="/admin/dashboard/car/new"
+          element={
+            isAuthenticated && user && user.role === "admin" ? (
+              <New />
+            ) : (
+              <Landing />
+            )
+          }
+        ></Route>
+
+        <Route
+          exact
+          path="/admin/dashboard/bookings"
+          element={
+            isAuthenticated && user && user.role === "admin" ? (
+              <BookingList />
+            ) : (
+              <Landing />
+            )
+          }
         ></Route>
       </Routes>
     </>
-  )
+  );
 }
 
 export default App;
